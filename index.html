@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>مجلة أسرة المحيميد</title>
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap 5 RTL -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 
   <!-- Font Awesome 6 -->
@@ -32,11 +32,12 @@
       --muted:#7a685d;
       --line:#eee1d4;
       --success:#5f8b6d;
-      --shadow:0 10px 30px rgba(122, 78, 45, 0.10);
-      --shadow-hover:0 18px 40px rgba(122, 78, 45, 0.16);
-      --radius-xl:28px;
-      --radius-lg:22px;
-      --radius-md:16px;
+      --shadow-sm:0 10px 30px rgba(0, 0, 0, 0.06);
+      --shadow-md:0 18px 40px rgba(0, 0, 0, 0.09);
+      --shadow-lg:0 18px 45px rgba(122, 78, 45, 0.14);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
     }
 
     *{
@@ -64,13 +65,13 @@
     }
 
     .section{
-      padding:70px 0;
+      padding:72px 0;
       position:relative;
     }
 
     .section-title-wrap{
-      margin-bottom:32px;
       text-align:center;
+      margin-bottom:34px;
     }
 
     .section-badge{
@@ -88,7 +89,7 @@
 
     .section-title{
       font-family:'Cairo','Tajawal',sans-serif;
-      font-size:clamp(2rem, 4vw, 3rem);
+      font-size:clamp(2rem, 4vw, 3.1rem);
       font-weight:800;
       margin:0;
       color:var(--primary);
@@ -96,81 +97,132 @@
     }
 
     .section-subtitle{
-      max-width:760px;
+      max-width:780px;
       margin:12px auto 0;
       color:var(--muted);
-      font-size:1.08rem;
+      font-size:1.05rem;
     }
 
-    .hero{
-      min-height:100vh;
-      position:relative;
+    .top-nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      padding:14px 0;
+      background:rgba(255,248,243,.72);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(238,225,212,.8);
+    }
+
+    .nav-shell{
+      border-radius:999px;
+      padding:12px 18px;
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(255,255,255,.85);
+      box-shadow:0 8px 28px rgba(0,0,0,.05);
+    }
+
+    .brand{
+      color:var(--primary);
+      font-weight:800;
+      font-size:1.1rem;
+    }
+
+    .nav-link-custom{
+      color:var(--text);
+      font-weight:700;
+      padding:8px 14px;
+      border-radius:999px;
+      transition:.25s ease;
+    }
+
+    .nav-link-custom:hover{
+      background:rgba(122, 78, 45, .08);
+      color:var(--primary);
+    }
+
+    .hero-textual{
+      min-height:88vh;
       display:flex;
       align-items:center;
+      position:relative;
       overflow:hidden;
       background:
-        linear-gradient(rgba(40,25,15,.48), rgba(40,25,15,.58)),
-        url('assets/images/1.jpg') center/cover no-repeat;
+        radial-gradient(circle at top left, rgba(184,139,90,.16), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(160,106,67,.12), transparent 26%),
+        linear-gradient(135deg, #fffaf6 0%, #fff3ea 45%, #fffdfb 100%);
     }
 
-    .hero::before{
+    .hero-textual::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,.18), transparent 25%),
-        linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+        linear-gradient(135deg, rgba(255,255,255,.25), transparent),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.00) 0px,
+          rgba(255,255,255,0.00) 18px,
+          rgba(184,139,90,0.018) 18px,
+          rgba(184,139,90,0.018) 19px
+        );
+      pointer-events:none;
     }
 
-    .hero-content{
+    .hero-card{
       position:relative;
-      z-index:2;
-      color:#fff;
+      z-index:1;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.9);
+      backdrop-filter:blur(14px);
+      border-radius:34px;
+      padding:42px 30px;
+      box-shadow:var(--shadow-lg);
       text-align:center;
-      width:100%;
+      max-width:950px;
+      margin:auto;
     }
 
     .hero-chip{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
       padding:10px 18px;
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
       border-radius:999px;
+      background:linear-gradient(135deg, rgba(184,139,90,.16), rgba(122,78,45,.08));
+      color:var(--primary);
+      font-weight:800;
       margin-bottom:20px;
-      font-size:.95rem;
-      font-weight:700;
     }
 
     .hero-title{
       font-family:'Cairo','Tajawal',sans-serif;
       font-size:clamp(2.3rem, 6vw, 4.8rem);
       font-weight:800;
-      margin-bottom:18px;
       line-height:1.25;
-      text-shadow:0 4px 20px rgba(0,0,0,.25);
+      color:var(--primary);
+      margin-bottom:18px;
     }
 
     .hero-title span{
-      background:linear-gradient(90deg,#fff,#f7dfc8);
+      background:linear-gradient(90deg,var(--primary),var(--accent));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
       background-clip:text;
     }
 
     .hero-desc{
-      max-width:900px;
-      margin:0 auto 28px;
-      color:rgba(255,255,255,.92);
-      font-size:1.15rem;
+      max-width:800px;
+      margin:0 auto 26px;
+      color:var(--muted);
+      font-size:1.12rem;
     }
 
     .hero-actions{
       display:flex;
+      flex-wrap:wrap;
       justify-content:center;
       gap:14px;
-      flex-wrap:wrap;
-      margin-top:26px;
+      margin-top:24px;
     }
 
     .btn-soft{
@@ -179,7 +231,7 @@
       padding:14px 24px;
       font-weight:700;
       transition:.3s ease;
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow-sm);
     }
 
     .btn-main{
@@ -190,137 +242,54 @@
     .btn-main:hover{
       transform:translateY(-2px);
       color:#fff;
-      box-shadow:var(--shadow-hover);
+      box-shadow:var(--shadow-md);
     }
 
-    .btn-light-soft{
-      background:rgba(255,255,255,.14);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.18);
-      backdrop-filter:blur(8px);
-    }
-
-    .btn-light-soft:hover{
-      transform:translateY(-2px);
-      color:#fff;
-      background:rgba(255,255,255,.22);
-    }
-
-    .top-nav{
-      position:fixed;
-      top:18px;
-      right:0;
-      left:0;
-      z-index:1000;
-      transition:.35s ease;
-    }
-
-    .top-nav.scrolled .nav-shell{
-      background:rgba(255,255,255,.85);
-      border-color:rgba(255,255,255,.7);
-      backdrop-filter:blur(18px);
-      box-shadow:0 8px 30px rgba(0,0,0,.08);
-    }
-
-    .nav-shell{
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.15);
-      background:rgba(255,255,255,.08);
-      backdrop-filter:blur(10px);
-      padding:12px 18px;
-    }
-
-    .brand{
-      color:#fff;
-      font-weight:800;
-      font-size:1.1rem;
-    }
-
-    .top-nav.scrolled .brand,
-    .top-nav.scrolled .nav-link-custom{
-      color:var(--text);
-    }
-
-    .nav-link-custom{
-      color:#fff;
-      font-weight:700;
-      padding:8px 14px;
-      border-radius:999px;
-      transition:.25s ease;
-    }
-
-    .nav-link-custom:hover{
-      background:rgba(255,255,255,.12);
-      color:#fff;
-    }
-
-    .top-nav.scrolled .nav-link-custom:hover{
-      background:rgba(122, 78, 45, .08);
+    .btn-outline-soft{
+      background:#fff;
       color:var(--primary);
+      border:1px solid var(--line);
+    }
+
+    .btn-outline-soft:hover{
+      background:var(--soft);
+      color:var(--primary);
+      transform:translateY(-2px);
     }
 
     .glass-card,
-    .family-card,
+    .quote-card,
     .kpi-card,
-    .news-card,
-    .project-card,
-    .quote-card{
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(255,255,255,.7);
-      backdrop-filter:blur(10px);
+    .person-card,
+    .media-card,
+    .no-image-card,
+    .news-list-card{
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(255,255,255,.92);
       border-radius:var(--radius-xl);
-      box-shadow:var(--shadow);
-      transition:.35s ease;
-      position:relative;
-      overflow:hidden;
+      box-shadow:var(--shadow-sm);
+      transition:all .35s ease;
     }
 
-    .family-card:hover,
+    .glass-card:hover,
+    .quote-card:hover,
     .kpi-card:hover,
-    .news-card:hover,
-    .project-card:hover,
-    .quote-card:hover{
+    .person-card:hover,
+    .media-card:hover,
+    .no-image-card:hover,
+    .news-list-card:hover{
       transform:translateY(-6px);
-      box-shadow:var(--shadow-hover);
+      box-shadow:var(--shadow-md);
     }
 
     .glass-card{
       padding:34px;
     }
 
-    .family-image-wrap{
-      position:relative;
-      padding:18px;
-    }
-
-    .family-image-wrap::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg, rgba(184,139,90,.18), rgba(122,78,45,.06));
-      border-radius:30px;
-      transform:rotate(-2deg);
-    }
-
-    .family-image{
-      position:relative;
-      z-index:2;
-      width:100%;
-      height:420px;
-      object-fit:cover;
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      transition:.35s ease;
-    }
-
-    .family-image:hover{
-      transform:scale(1.02);
-    }
-
     .info-list{
       display:grid;
       gap:14px;
-      margin-top:22px;
+      margin-top:24px;
     }
 
     .info-item{
@@ -334,8 +303,8 @@
     }
 
     .info-icon{
-      width:42px;
-      height:42px;
+      width:44px;
+      height:44px;
       border-radius:50%;
       display:flex;
       align-items:center;
@@ -343,33 +312,33 @@
       background:linear-gradient(135deg,var(--accent),var(--primary));
       color:#fff;
       flex-shrink:0;
-      box-shadow:var(--shadow);
     }
 
     .quote-card{
-      padding:38px 28px;
+      padding:34px 28px;
       text-align:center;
-      background:linear-gradient(180deg,#fff,#fff9f4);
+      height:100%;
+      background:linear-gradient(180deg,#fff,#fff8f3);
     }
 
     .quote-icon{
       width:72px;
       height:72px;
       border-radius:50%;
+      margin:0 auto 18px;
       display:flex;
       align-items:center;
       justify-content:center;
-      margin:0 auto 18px;
       background:linear-gradient(135deg,var(--accent),var(--primary));
       color:#fff;
-      font-size:1.4rem;
-      box-shadow:var(--shadow);
+      font-size:1.35rem;
+      box-shadow:var(--shadow-sm);
     }
 
     .quote-text{
-      font-size:1.15rem;
+      font-size:1.12rem;
       color:var(--text);
-      margin-bottom:18px;
+      margin-bottom:16px;
       line-height:2.1;
     }
 
@@ -381,6 +350,8 @@
     .kpi-card{
       padding:28px;
       height:100%;
+      position:relative;
+      overflow:hidden;
     }
 
     .kpi-title{
@@ -406,132 +377,210 @@
     .bg-icon-float{
       position:absolute;
       left:18px;
-      bottom:14px;
-      font-size:4.2rem;
+      bottom:10px;
+      font-size:4rem;
       color:rgba(122,78,45,.07);
       transition:.35s ease;
       pointer-events:none;
     }
 
     .kpi-card:hover .bg-icon-float,
-    .news-card:hover .bg-icon-float,
-    .project-card:hover .bg-icon-float{
+    .news-list-card:hover .bg-icon-float{
       transform:translateY(-8px) scale(1.05);
-      color:rgba(122,78,45,.10);
+      color:rgba(122,78,45,.1);
     }
 
-    .achievement-card{
-      height:100%;
-      padding:26px;
-      border-radius:26px;
-      background:#fff;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      transition:.35s ease;
+    .image-frame{
       position:relative;
+      display:block;
+      border-radius:var(--radius-lg);
+      overflow:visible;
+    }
+
+    .image-frame::before{
+      content:'';
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:100%;
+      height:100%;
+      border-radius:var(--radius-lg);
+      background:linear-gradient(145deg, #fdf1e6 0%, #f9e4d4 100%);
+      opacity:.75;
+      z-index:0;
+      transition:all .35s ease;
+    }
+
+    .image-frame:hover::before{
+      top:9px;
+      right:9px;
+    }
+
+    .img-cover{
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      min-height:320px;
+      object-fit:cover;
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-sm);
+      transition:all .4s ease;
+      display:block;
+    }
+
+    .image-frame:hover .img-cover{
+      transform:scale(1.02);
+      box-shadow:var(--shadow-md);
+    }
+
+    .img-circle{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid #fff;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      transition:all .35s ease;
+      background:#f7efe8;
+    }
+
+    .img-circle:hover{
+      transform:scale(1.03);
+      box-shadow:0 18px 36px rgba(0,0,0,.10);
+    }
+
+    .img-rounded{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+      border-radius:24px;
+      box-shadow:var(--shadow-sm);
+      transition:all .35s ease;
+      display:block;
+    }
+
+    .img-rounded:hover{
+      transform:scale(1.03);
+      box-shadow:var(--shadow-md);
+    }
+
+    .cover-image{
+      position:relative;
+      border-radius:24px;
       overflow:hidden;
     }
 
-    .achievement-card:hover{
-      transform:translateY(-5px);
-      box-shadow:var(--shadow-hover);
+    .cover-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,
+        rgba(92,62,46,0.38) 0%,
+        rgba(212,165,154,0.18) 100%);
+      z-index:1;
     }
 
-    .achievement-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:18px;
+    .cover-text{
+      position:absolute;
+      bottom:24px;
+      right:24px;
+      color:#fff;
+      z-index:2;
+      text-shadow:0 2px 10px rgba(0,0,0,.2);
     }
 
-    .achievement-icon{
-      width:58px;
-      height:58px;
-      border-radius:18px;
+    .cover-text h4{
+      margin:0 0 8px;
+      font-weight:800;
+    }
+
+    .cover-text p{
+      margin:0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .person-card{
+      padding:24px 20px;
+      text-align:center;
+      height:100%;
+    }
+
+    .person-name{
+      margin-top:16px;
+      margin-bottom:6px;
+      font-size:1.08rem;
+      font-weight:800;
+      color:var(--primary);
+    }
+
+    .person-meta{
+      color:var(--muted);
+      font-size:.98rem;
+      line-height:1.8;
+    }
+
+    .no-image-card{
+      padding:24px 18px;
+      height:100%;
+      text-align:center;
+      background:linear-gradient(180deg,#fff,#fff8f3);
+      border:1px dashed #dfc8b3;
+    }
+
+    .no-image-icon{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      margin:0 auto 14px;
       display:flex;
       align-items:center;
       justify-content:center;
+      background:linear-gradient(135deg,#d9b38c,#a06a43);
       color:#fff;
-      background:linear-gradient(135deg,var(--accent),var(--primary));
-      font-size:1.25rem;
-      box-shadow:var(--shadow);
+      font-size:1.2rem;
     }
 
-    .achievement-title{
-      font-size:1.3rem;
+    .no-image-name{
       font-weight:800;
       color:var(--primary);
-      margin:0;
+      margin-bottom:6px;
     }
 
-    .achievement-list{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
+    .no-image-meta{
+      color:var(--muted);
+      font-size:.95rem;
     }
 
-    .achievement-list li{
-      background:var(--soft);
-      border:1px solid var(--line);
-      padding:12px 14px;
-      border-radius:14px;
-      color:var(--text);
-    }
-
-    .achievement-list li strong{
-      color:var(--primary);
-    }
-
-    .gallery-card{
-      position:relative;
+    .media-card{
       overflow:hidden;
-      border-radius:28px;
-      box-shadow:var(--shadow);
       height:100%;
-      min-height:280px;
+      background:#fff;
+      border:1px solid #eee1d4;
     }
 
-    .gallery-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.45s ease;
+    .media-card-body{
+      padding:18px;
     }
 
-    .gallery-card:hover img{
-      transform:scale(1.04);
-    }
-
-    .gallery-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(32,18,10,.72), rgba(32,18,10,.1));
-      display:flex;
-      align-items:flex-end;
-      padding:24px;
-    }
-
-    .gallery-caption{
-      color:#fff;
-    }
-
-    .gallery-caption h5{
-      margin:0 0 6px;
+    .media-card-title{
       font-weight:800;
+      color:var(--primary);
+      margin-bottom:8px;
+      font-size:1.05rem;
+      line-height:1.7;
     }
 
-    .gallery-caption p{
+    .media-card-text{
+      color:var(--muted);
       margin:0;
-      color:rgba(255,255,255,.88);
+      line-height:1.9;
     }
 
-    .project-card,
-    .news-card{
+    .news-list-card{
       padding:26px;
       height:100%;
+      position:relative;
+      overflow:hidden;
     }
 
     .card-head{
@@ -553,8 +602,8 @@
       background:linear-gradient(135deg,var(--accent),var(--primary));
       color:#fff;
       font-size:1.1rem;
-      box-shadow:var(--shadow);
       flex-shrink:0;
+      box-shadow:var(--shadow-sm);
     }
 
     .card-head h4{
@@ -564,7 +613,7 @@
       color:var(--primary);
     }
 
-    .news-list, .project-list{
+    .news-list{
       margin:0;
       padding:0;
       list-style:none;
@@ -574,7 +623,7 @@
       z-index:2;
     }
 
-    .news-list li, .project-list li{
+    .news-list li{
       background:var(--soft);
       border:1px solid var(--line);
       border-radius:14px;
@@ -585,7 +634,7 @@
     .footer-mag{
       background:linear-gradient(135deg,#3f2a1f,#6f4a31);
       color:#fff;
-      padding:50px 0 30px;
+      padding:48px 0 30px;
       position:relative;
       overflow:hidden;
     }
@@ -635,22 +684,23 @@
     }
 
     @media (max-width: 991.98px){
-      .hero{
-        min-height:90vh;
-      }
-
-      .family-image{
-        height:320px;
-      }
-
       .nav-links-wrap{
         display:none !important;
+      }
+
+      .hero-textual{
+        min-height:78vh;
       }
     }
 
     @media (max-width: 767.98px){
       .section{
         padding:52px 0;
+      }
+
+      .hero-card{
+        padding:30px 18px;
+        border-radius:26px;
       }
 
       .hero-title{
@@ -661,37 +711,37 @@
         font-size:1rem;
       }
 
-      .glass-card,
-      .quote-card,
-      .kpi-card,
-      .news-card,
-      .project-card,
-      .achievement-card{
-        padding:22px;
-      }
-
-      .family-image{
-        height:250px;
-      }
-
       .section-title{
         font-size:2rem;
       }
 
-      .top-nav{
-        top:12px;
+      .glass-card,
+      .quote-card,
+      .kpi-card,
+      .person-card,
+      .no-image-card,
+      .news-list-card{
+        padding:22px;
       }
 
-      .nav-shell{
-        border-radius:20px;
+      .img-circle{
+        width:120px;
+        height:120px;
+      }
+
+      .img-rounded{
+        height:210px;
+      }
+
+      .img-cover{
+        min-height:270px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="top-nav" id="topNav">
+  <nav class="top-nav">
     <div class="container">
       <div class="nav-shell d-flex align-items-center justify-content-between">
         <a href="#" class="brand">
@@ -701,9 +751,10 @@
 
         <div class="nav-links-wrap d-flex align-items-center gap-2">
           <a href="#about" class="nav-link-custom">نبذة</a>
-          <a href="#greeting" class="nav-link-custom">المعايدة</a>
-          <a href="#achievements" class="nav-link-custom">الإنجازات</a>
-          <a href="#family-news" class="nav-link-custom">الأخبار</a>
+          <a href="#greeting" class="nav-link-custom">المعايدات</a>
+          <a href="#university-graduates" class="nav-link-custom">الخريجون</a>
+          <a href="#university-excellence" class="nav-link-custom">التفوق</a>
+          <a href="#newborns" class="nav-link-custom">المواليد</a>
           <a href="#projects" class="nav-link-custom">المشاريع</a>
           <a href="#closing" class="nav-link-custom">الخاتمة</a>
         </div>
@@ -711,12 +762,11 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero">
+  <header class="hero-textual">
     <div class="container">
-      <div class="hero-content fade-up show">
+      <div class="hero-card fade-up show">
         <div class="hero-chip">
-          <i class="fa-solid fa-heart me-2"></i>
+          <i class="fa-solid fa-heart me-1"></i>
           إصدار عائلي خاص
         </div>
 
@@ -725,8 +775,8 @@
         </h1>
 
         <p class="hero-desc">
-          مساحة عائلية دافئة نستعرض فيها نبذة الأسرة، كلمات التهنئة، إنجازات الأبناء، أخبار الأسرة، والمشاريع المباركة، 
-          في قالب بصري أنيق وحديث يليق بروابط الأسرة وصلة الرحم.
+          مجلة عائلية رقمية توثّق الكلمات الجميلة، والإنجازات المشرّفة، وأخبار الأسرة السعيدة، ومشاريع الأبناء،
+          في قالب دافئ وأنيق يليق بروح العائلة والمحبة وصلة الرحم.
         </p>
 
         <div class="hero-actions">
@@ -734,7 +784,7 @@
             <i class="fa-solid fa-arrow-down-long me-2"></i>
             ابدأ التصفح
           </a>
-          <button class="btn-soft btn-light-soft" onclick="showWelcome()">
+          <button class="btn-soft btn-outline-soft" onclick="showWelcome()">
             <i class="fa-solid fa-sparkles me-2"></i>
             رسالة ترحيبية
           </button>
@@ -743,7 +793,6 @@
     </div>
   </header>
 
-  <!-- About -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-title-wrap fade-up">
@@ -751,25 +800,19 @@
           <i class="fa-solid fa-users"></i>
           نبذة
         </div>
-        <h2 class="section-title">نبذة عن الأسرة</h2>
+        <h2 class="section-title">نبذة عن الأسرة والمجلة</h2>
         <p class="section-subtitle">
-          لمحة موجزة تعرّف بالمجلة والأسرة الكريمة التي يجمعها الود، والتواصل، والوفاء، والاعتزاز بالإرث الطيب.
+          لمحة تعريفية بالمجلة العائلية، وما تحمله من معانٍ جميلة في التوثيق والتواصل وإبراز الأخبار والإنجازات.
         </p>
       </div>
 
       <div class="row g-4 align-items-center">
         <div class="col-lg-6 fade-up">
-          <div class="family-image-wrap">
-            <img src="assets/images/2.jpg" alt="صورة الأسرة" class="family-image">
-          </div>
-        </div>
-
-        <div class="col-lg-6 fade-up">
           <div class="glass-card">
             <h3 style="font-weight:800;color:var(--primary);margin-bottom:14px;">تعريف بالمجلة</h3>
-            <p style="color:var(--text);margin-bottom:0;">
-              <strong>مجلة أسرة المحيميد</strong> هي مجلة عائلية توثّق المناسبات السعيدة، والإنجازات المشرّفة، 
-              والأخبار المبهجة، وتبرز روح الألفة والمحبة بين أفراد الأسرة.
+            <p style="margin-bottom:0;color:var(--text);">
+              <strong>مجلة أسرة المحيميد</strong> مساحة عائلية دافئة تجمع الأخبار السعيدة، والتهاني، والإنجازات العلمية،
+              والنجاحات العملية، في شكل عصري يليق بالأسرة ويجعل المجلة جميلة عند التصفح والمشاركة.
             </p>
 
             <div class="info-list">
@@ -805,55 +848,73 @@
             </div>
           </div>
         </div>
+
+        <div class="col-lg-6 fade-up">
+          <div class="quote-card h-100">
+            <div class="quote-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="quote-text">
+              هذه المجلة ليست مجرد صفحات رقمية، بل نافذة دافئة توثّق روابط الأسرة، وتحتفي بالنجاحات،
+              وتفرح بالمناسبات، وتُبرز ما يجمع القلوب من محبة وألفة ووفاء.
+            </div>
+            <div class="quote-author">رؤية المجلة</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Greeting -->
   <section class="section" id="greeting" style="background:linear-gradient(180deg,#fff8f3 0%, #fffdfb 100%);">
     <div class="container">
       <div class="section-title-wrap fade-up">
         <div class="section-badge">
           <i class="fa-solid fa-envelope-open-text"></i>
-          المعايدة
+          المعايدات
         </div>
-        <h2 class="section-title">كلمات المعايدة والتهنئة</h2>
+        <h2 class="section-title">المعايدات والكلمات الافتتاحية</h2>
         <p class="section-subtitle">
-          كلمات محبة وتهنئة بمناسبة عيد الفطر المبارك، تعبّر عن روح الأسرة، وصلة الرحم، والدعاء بالخير والبركة.
+          كلمات محبة وتهنئة تعبّر عن روح العائلة، وتمنح المجلة طابعًا إنسانيًا دافئًا.
         </p>
       </div>
 
       <div class="row g-4">
-        <div class="col-lg-6 fade-up">
-          <div class="quote-card h-100">
-            <div class="quote-icon">
-              <i class="fa-solid fa-quote-right"></i>
+        <div class="col-lg-4 fade-up">
+          <div class="cover-image image-frame">
+            <img src="assets/images/1.jpg" class="img-cover" alt="المعايدة الأولى">
+            <div class="cover-overlay"></div>
+            <div class="cover-text">
+              <h4>تهنئة أولى</h4>
+              <p>يسرني في هذه المناسبة السعيدة...</p>
             </div>
-            <div class="quote-text">
-              يسرني في هذه المناسبة السعيدة، مناسبة عيد الفطر المبارك، أن أرفع أسمى آيات التهنئة والتبريكات إلى أولادي وأولاد إخواني الكرام،
-              وإلى كافة أفراد العائلة، ونسأل الله أن يعيد هذا العيد علينا وعليكم بالخير والبركة، وأن يجمعنا دائمًا على الحب والتآزر وصلة الرحم.
-            </div>
-            <div class="quote-author">كلمة افتتاحية</div>
           </div>
         </div>
 
-        <div class="col-lg-6 fade-up">
-          <div class="quote-card h-100">
-            <div class="quote-icon">
-              <i class="fa-solid fa-moon"></i>
+        <div class="col-lg-4 fade-up">
+          <div class="cover-image image-frame">
+            <img src="assets/images/2.jpg" class="img-cover" alt="المعايدة الثانية">
+            <div class="cover-overlay"></div>
+            <div class="cover-text">
+              <h4>تهنئة ثانية</h4>
+              <p>الحمد لله الذي بنعمته تتم الصالحات...</p>
             </div>
-            <div class="quote-text">
-              أتقدم بالتهنئة أولًا لوالدي الكريم ثم لأبناء عمي الكرام وإخوتي الأعزاء وبنيهم، على قدوم عيد الفطر المبارك،
-              وأحمد الله على أن أتم لنا شهر رمضان على خير، وأسأل الله أن يتقبل منا الصيام والقيام، وأن يملأ حياتكم بالفرح والسعادة والبركة.
+          </div>
+        </div>
+
+        <div class="col-lg-4 fade-up">
+          <div class="cover-image image-frame">
+            <img src="assets/images/3.jpg" class="img-cover" alt="المعايدة الثالثة">
+            <div class="cover-overlay"></div>
+            <div class="cover-text">
+              <h4>تهنئة ثالثة</h4>
+              <p>أتقدم بالتهنئة أولًا لوالدي الكريم...</p>
             </div>
-            <div class="quote-author">أخوكم: محمد الصالح أبوعبدالله</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KPI -->
   <section class="section">
     <div class="container">
       <div class="section-title-wrap fade-up">
@@ -861,148 +922,313 @@
           <i class="fa-solid fa-chart-simple"></i>
           لمحة سريعة
         </div>
-        <h2 class="section-title">أرقام مختصرة من المجلة</h2>
+        <h2 class="section-title">أبرز محطات المجلة</h2>
       </div>
 
       <div class="row g-4">
         <div class="col-md-6 col-lg-3 fade-up">
           <div class="kpi-card">
-            <div class="kpi-title">القبولات الجامعية</div>
+            <div class="kpi-title">المعايدات الافتتاحية</div>
             <div class="kpi-value">3</div>
-            <div class="kpi-sub">شريعة، تسويق وابتكار، رياضيات</div>
+            <div class="kpi-sub">رسائل تهنئة وصلة رحم</div>
+            <i class="fa-solid fa-envelope-open-text bg-icon-float"></i>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="kpi-card">
+            <div class="kpi-title">الخريجون والمتفوقون</div>
+            <div class="kpi-value">12+</div>
+            <div class="kpi-sub">جامعي وثانوي</div>
             <i class="fa-solid fa-graduation-cap bg-icon-float"></i>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3 fade-up">
           <div class="kpi-card">
-            <div class="kpi-title">تفوق دراسي</div>
-            <div class="kpi-value">8+</div>
-            <div class="kpi-sub">نِسَب ودرجات مميزة</div>
-            <i class="fa-solid fa-award bg-icon-float"></i>
+            <div class="kpi-title">المواليد</div>
+            <div class="kpi-value">7</div>
+            <div class="kpi-sub">أخبار مبهجة للأسرة</div>
+            <i class="fa-solid fa-baby bg-icon-float"></i>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3 fade-up">
           <div class="kpi-card">
-            <div class="kpi-title">حفظ القرآن</div>
-            <div class="kpi-value">3</div>
-            <div class="kpi-sub">كامل، 15 جزء، 10 أجزاء</div>
-            <i class="fa-solid fa-book-quran bg-icon-float"></i>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 fade-up">
-          <div class="kpi-card">
-            <div class="kpi-title">أخبار الأسرة</div>
-            <div class="kpi-value">7+</div>
-            <div class="kpi-sub">زواج ومواليد وأخبار مبهجة</div>
-            <i class="fa-solid fa-heart-circle-check bg-icon-float"></i>
+            <div class="kpi-title">المشاريع</div>
+            <div class="kpi-value">8</div>
+            <div class="kpi-sub">أعمال ومبادرات مميزة</div>
+            <i class="fa-solid fa-briefcase bg-icon-float"></i>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Achievements -->
-  <section class="section" id="achievements" style="background:linear-gradient(180deg,#fffdfb 0%, #fff7f0 100%);">
+  <section class="section" id="university-graduates" style="background:linear-gradient(180deg,#fffdfb 0%, #fff7f0 100%);">
     <div class="container">
       <div class="section-title-wrap fade-up">
         <div class="section-badge">
-          <i class="fa-solid fa-trophy"></i>
-          الإنجازات
+          <i class="fa-solid fa-building-columns"></i>
+          التخرج الجامعي
         </div>
-        <h2 class="section-title">إنجازات الأسرة</h2>
-        <p class="section-subtitle">
-          نماذج مشرّفة من القبولات الجامعية، والتفوق الدراسي، وحفظ القرآن الكريم، بما يعكس تميز أبناء الأسرة وطموحهم.
-        </p>
+        <h2 class="section-title">المتخرجون من الجامعات</h2>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/4.jpg" class="img-circle" alt="عمر فهد البراهيم المحيميد">
+            <div class="person-name">عمر فهد البراهيم المحيميد</div>
+            <div class="person-meta">شريعة</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/5.jpg" class="img-circle" alt="جابر عبدالله البراهيم المحيميد">
+            <div class="person-name">جابر عبدالله البراهيم المحيميد</div>
+            <div class="person-meta">تسويق وابتكار</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/6.jpg" class="img-circle" alt="راكان احمد محمد المحيميد">
+            <div class="person-name">راكان احمد محمد المحيميد</div>
+            <div class="person-meta">رياضيات</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="highschool-graduates">
+    <div class="container">
+      <div class="section-title-wrap fade-up">
+        <div class="section-badge">
+          <i class="fa-solid fa-school"></i>
+          التخرج الثانوي
+        </div>
+        <h2 class="section-title">المتخرجون من الثانوي</h2>
       </div>
 
       <div class="row g-4">
-        <div class="col-lg-4 fade-up">
-          <div class="achievement-card">
-            <div class="achievement-top">
-              <h3 class="achievement-title">القبولات الجامعية</h3>
-              <div class="achievement-icon">
-                <i class="fa-solid fa-building-columns"></i>
-              </div>
-            </div>
-            <ul class="achievement-list">
-              <li><strong>عمر فهد البراهيم المحيميد</strong> — شريعة</li>
-              <li><strong>جابر عبدالله البراهيم المحيميد</strong> — تسويق وابتكار</li>
-              <li><strong>راكان أحمد محمد المحيميد</strong> — رياضيات</li>
-            </ul>
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/7.jpg" class="img-circle" alt="ريان البراهيم العبدالله المحيميد">
+            <div class="person-name">ريان البراهيم العبدالله المحيميد</div>
+            <div class="person-meta">متخرج من المرحلة الثانوية</div>
           </div>
         </div>
 
-        <div class="col-lg-4 fade-up">
-          <div class="achievement-card">
-            <div class="achievement-top">
-              <h3 class="achievement-title">التفوق الدراسي</h3>
-              <div class="achievement-icon">
-                <i class="fa-solid fa-star"></i>
-              </div>
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="no-image-card">
+            <div class="no-image-icon">
+              <i class="fa-solid fa-user"></i>
             </div>
-            <ul class="achievement-list">
-              <li><strong>نوره عبدالله محمد المحيميد</strong> — تمويل (4.95)</li>
-              <li><strong>محمد أحمد محمد المحيميد</strong> — إدارة (4.60)</li>
-              <li><strong>ديم ماجد البراهيم المحيميد</strong> — 99.86</li>
-              <li><strong>وتين فيصل البراهيم المحيميد</strong> — 100</li>
-              <li><strong>أسامه عبدالله محمد المحيميد</strong> — 100%</li>
-            </ul>
+            <div class="no-image-name">جنى علي البراهيم المحيميد</div>
+            <div class="no-image-meta">متخرجة من المرحلة الثانوية</div>
           </div>
         </div>
 
-        <div class="col-lg-4 fade-up">
-          <div class="achievement-card">
-            <div class="achievement-top">
-              <h3 class="achievement-title">حفظ القرآن الكريم</h3>
-              <div class="achievement-icon">
-                <i class="fa-solid fa-book-quran"></i>
-              </div>
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="no-image-card">
+            <div class="no-image-icon">
+              <i class="fa-solid fa-user"></i>
             </div>
-            <ul class="achievement-list">
-              <li><strong>أروى عبدالله البراهيم المحيميد</strong> — كامل</li>
-              <li><strong>حسام عبدالله البراهيم المحيميد</strong> — 15 جزء</li>
-              <li><strong>شادن علي البراهيم المحيميد</strong> — 10 أجزاء</li>
-            </ul>
+            <div class="no-image-name">ديم ماجد البراهيم المحيميد</div>
+            <div class="no-image-meta">متخرجة من المرحلة الثانوية</div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="row g-4 mt-1">
-        <div class="col-md-4 fade-up">
-          <div class="gallery-card">
-            <img src="assets/images/3.jpg" alt="القبولات الجامعية">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>فخر أكاديمي</h5>
-                <p>محطات مشرّفة لأبناء الأسرة في مسيرتهم التعليمية.</p>
-              </div>
+  <section class="section" id="university-excellence" style="background:linear-gradient(180deg,#fff7f0 0%, #fffdfb 100%);">
+    <div class="container">
+      <div class="section-title-wrap fade-up">
+        <div class="section-badge">
+          <i class="fa-solid fa-award"></i>
+          التفوق الجامعي
+        </div>
+        <h2 class="section-title">المتفوقون جامعيًا</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="no-image-card">
+            <div class="no-image-icon"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="no-image-name">نور يوسف محمد المحيميد</div>
+            <div class="no-image-meta">طب</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="no-image-card">
+            <div class="no-image-icon"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="no-image-name">نوره عبدالله محمد المحيميد</div>
+            <div class="no-image-meta">تمويل — 4.95</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="person-card">
+            <img src="assets/images/8.jpg" class="img-circle" alt="محمد احمد محمد المحيميد">
+            <div class="person-name">محمد احمد محمد المحيميد</div>
+            <div class="person-meta">إدارة — 4.60</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="person-card">
+            <img src="assets/images/9.jpg" class="img-circle" alt="عزام حمد البراهيم المحيميد">
+            <div class="person-name">عزام حمد البراهيم المحيميد</div>
+            <div class="person-meta">4.45</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="highschool-excellence">
+    <div class="container">
+      <div class="section-title-wrap fade-up">
+        <div class="section-badge">
+          <i class="fa-solid fa-medal"></i>
+          التفوق الثانوي
+        </div>
+        <h2 class="section-title">المتفوقون في المرحلة الثانوية</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/10.jpg" class="img-circle" alt="مالك ماجد البراهيم المحيميد">
+            <div class="person-name">مالك ماجد البراهيم المحيميد</div>
+            <div class="person-meta">99.42</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/11.jpg" class="img-circle" alt="اسامه عبدالله محمد المحيميد">
+            <div class="person-name">اسامه عبدالله محمد المحيميد</div>
+            <div class="person-meta">100%</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/12.jpg" class="img-circle" alt="وجيه عبدالعزيز محمد المحيميد">
+            <div class="person-name">وجيه عبدالعزيز محمد المحيميد</div>
+            <div class="person-meta">99%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quran" style="background:linear-gradient(180deg,#fffdfb 0%, #fff7f0 100%);">
+    <div class="container">
+      <div class="section-title-wrap fade-up">
+        <div class="section-badge">
+          <i class="fa-solid fa-book-quran"></i>
+          حفظ القرآن
+        </div>
+        <h2 class="section-title">حفظة القرآن</h2>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="person-card">
+            <img src="assets/images/13.jpg" class="img-circle" alt="حسام عبدالله البراهيم المحيميد">
+            <div class="person-name">حسام عبدالله البراهيم المحيميد</div>
+            <div class="person-meta">15 جزء</div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="no-image-card">
+            <div class="no-image-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="no-image-name">إنجازات البنات</div>
+            <div class="no-image-meta">تُعرض نصيًا لعدم توفر الصور</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="newborns">
+    <div class="container">
+      <div class="section-title-wrap fade-up">
+        <div class="section-badge">
+          <i class="fa-solid fa-baby"></i>
+          المواليد
+        </div>
+        <h2 class="section-title">مواليد الأسرة</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/14.jpg" class="img-rounded" alt="بلال">
+            <div class="media-card-body">
+              <div class="media-card-title">بلال بن ماجد البراهيم المحيميد</div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 fade-up">
-          <div class="gallery-card">
-            <img src="assets/images/4.jpg" alt="التفوق الدراسي">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>تفوق وتميز</h5>
-                <p>نتائج تبعث الفخر وتعكس الجد والاجتهاد.</p>
-              </div>
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/15.jpg" class="img-rounded" alt="رند">
+            <div class="media-card-body">
+              <div class="media-card-title">رند بنت محمد البراهيم المحيميد</div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 fade-up">
-          <div class="gallery-card">
-            <img src="assets/images/5.jpg" alt="حفظ القرآن الكريم">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>نور القرآن</h5>
-                <p>إنجازات مباركة في حفظ كتاب الله.</p>
-              </div>
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/16.jpg" class="img-rounded" alt="فهدة">
+            <div class="media-card-body">
+              <div class="media-card-title">فهدة بنت ابراهيم حمد البراهيم المحيميد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/17.jpg" class="img-rounded" alt="طلال">
+            <div class="media-card-body">
+              <div class="media-card-title">طلال بن عبدالله حمد البراهيم المحيميد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/18.jpg" class="img-rounded" alt="مها">
+            <div class="media-card-body">
+              <div class="media-card-title">مها بنت عبدالعزيز حمد البراهيم المحيميد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/19.jpg" class="img-rounded" alt="فهد">
+            <div class="media-card-body">
+              <div class="media-card-title">فهد خالد عبدالله المحيميد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/20.jpg" class="img-rounded" alt="سمو">
+            <div class="media-card-body">
+              <div class="media-card-title">سمو جهاد صالح المحيميد</div>
             </div>
           </div>
         </div>
@@ -1010,8 +1236,7 @@
     </div>
   </section>
 
-  <!-- Projects -->
-  <section class="section" id="projects">
+  <section class="section" id="projects" style="background:linear-gradient(180deg,#fff7f0 0%, #fffdfb 100%);">
     <div class="container">
       <div class="section-title-wrap fade-up">
         <div class="section-badge">
@@ -1019,64 +1244,84 @@
           المشاريع
         </div>
         <h2 class="section-title">مشاريع أبناء الأسرة</h2>
-        <p class="section-subtitle">
-          مجموعة من الأعمال والمشاريع التجارية التي تمثل روح المبادرة والاعتماد على الله ثم السعي والاجتهاد.
-        </p>
       </div>
 
       <div class="row g-4">
-        <div class="col-lg-6 fade-up">
-          <div class="project-card h-100">
-            <div class="card-head">
-              <div class="card-icon">
-                <i class="fa-solid fa-store"></i>
-              </div>
-              <h4>أعمال ومشاريع</h4>
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/21.jpg" class="img-rounded" alt="المحيميد لمواد البناء">
+            <div class="media-card-body">
+              <div class="media-card-title">المحيميد لمواد البناء</div>
+              <p class="media-card-text">عبدالله حمد إبراهيم المحيميد</p>
             </div>
-
-            <ul class="project-list">
-              <li>المحيميد لمواد البناء — عبدالله حمد إبراهيم المحيميد</li>
-              <li>موقع الحلى — إبراهيم عبدالله إبراهيم المحيميد</li>
-              <li>شركة الفيصل / إيكا للأثاث — فيصل إبراهيم المحيميد</li>
-              <li>صاد وان لزينة السيارات — صالح عبدالله صالح المحيميد</li>
-              <li>المحيميد للأواني — أحمد وإبراهيم يوسف إبراهيم المحيميد</li>
-            </ul>
-
-            <i class="fa-solid fa-shop bg-icon-float"></i>
           </div>
         </div>
 
-        <div class="col-lg-6 fade-up">
-          <div class="project-card h-100">
-            <div class="card-head">
-              <div class="card-icon">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-              </div>
-              <h4>أعمال أخرى مميزة</h4>
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/22.jpg" class="img-rounded" alt="موقع الحلى">
+            <div class="media-card-body">
+              <div class="media-card-title">موقع الحلى</div>
+              <p class="media-card-text">إبراهيم عبدالله إبراهيم المحيميد</p>
             </div>
-
-            <ul class="project-list">
-              <li>محل أيوب للمستلزمات الرجالية — أيوب إبراهيم المحيميد</li>
-              <li>مؤسسة فهد إبراهيم المحيميد</li>
-              <li>شركة نكتل الخليج — صالح وعبدالله محمد المحيميد</li>
-              <li>حفلتي للورد الطبيعي — عبدالعزيز محمد المحيميد</li>
-              <li>ورشة لمعة معدن — جهاد صالح محمد المحيميد</li>
-            </ul>
-
-            <i class="fa-solid fa-rocket bg-icon-float"></i>
           </div>
         </div>
-      </div>
 
-      <div class="row g-4 mt-1">
-        <div class="col-12 fade-up">
-          <div class="gallery-card" style="min-height:360px;">
-            <img src="assets/images/6.jpg" alt="مشاريع أبناء الأسرة">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>روح المبادرة والعمل</h5>
-                <p>نجاحات عملية وتجارية تعبّر عن الجد والاجتهاد وحب الإنجاز.</p>
-              </div>
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/23.jpg" class="img-rounded" alt="إيكا للأثاث">
+            <div class="media-card-body">
+              <div class="media-card-title">شركة الفيصل / إيكا للأثاث</div>
+              <p class="media-card-text">فيصل إبراهيم المحيميد</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/24.jpg" class="img-rounded" alt="صاد وان">
+            <div class="media-card-body">
+              <div class="media-card-title">صاد وان لزينة السيارات</div>
+              <p class="media-card-text">صالح عبدالله صالح المحيميد</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/25.jpg" class="img-rounded" alt="xpc">
+            <div class="media-card-body">
+              <div class="media-card-title">xpc</div>
+              <p class="media-card-text">عبدالله محمد صالح المحيميد</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/26.jpg" class="img-rounded" alt="عبدالله محمد صالح المحيميد">
+            <div class="media-card-body">
+              <div class="media-card-title">عبدالله محمد صالح المحيميد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/27.jpg" class="img-rounded" alt="محل أيوب">
+            <div class="media-card-body">
+              <div class="media-card-title">محل أيوب للمستلزمات الرجالية</div>
+              <p class="media-card-text">أيوب إبراهيم المحيميد</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 fade-up">
+          <div class="media-card">
+            <img src="assets/images/28.jpg" class="img-rounded" alt="محل أيوب 2">
+            <div class="media-card-body">
+              <div class="media-card-title">محل أيوب للمستلزمات الرجالية</div>
+              <p class="media-card-text">أيوب إبراهيم المحيميد</p>
             </div>
           </div>
         </div>
@@ -1084,8 +1329,7 @@
     </div>
   </section>
 
-  <!-- Family News -->
-  <section class="section" id="family-news" style="background:linear-gradient(180deg,#fff7f0 0%, #fffdfb 100%);">
+  <section class="section" id="family-news">
     <div class="container">
       <div class="section-title-wrap fade-up">
         <div class="section-badge">
@@ -1093,19 +1337,16 @@
           أخبار الأسرة
         </div>
         <h2 class="section-title">مناسبات وأخبار مبهجة</h2>
-        <p class="section-subtitle">
-          لحظات فرح تستحق التوثيق، من الزواج إلى المواليد، وصولًا إلى شجرة الأسرة بوصفها رمزًا للامتداد والترابط.
-        </p>
       </div>
 
       <div class="row g-4">
-        <div class="col-lg-4 fade-up">
-          <div class="news-card h-100">
+        <div class="col-lg-6 fade-up">
+          <div class="news-list-card h-100">
             <div class="card-head">
               <div class="card-icon">
                 <i class="fa-solid fa-rings-wedding"></i>
               </div>
-              <h4>الزواج</h4>
+              <h4>أخبار الزواج</h4>
             </div>
             <ul class="news-list">
               <li>روف علي المحيميد</li>
@@ -1114,81 +1355,25 @@
           </div>
         </div>
 
-        <div class="col-lg-4 fade-up">
-          <div class="news-card h-100">
-            <div class="card-head">
-              <div class="card-icon">
-                <i class="fa-solid fa-baby"></i>
-              </div>
-              <h4>المواليد</h4>
-            </div>
-            <ul class="news-list">
-              <li>بلال بن ماجد البراهيم المحيميد</li>
-              <li>رند بنت محمد البراهيم المحيميد</li>
-              <li>فهدة بنت إبراهيم حمد البراهيم المحيميد</li>
-              <li>طلال بن عبدالله حمد البراهيم المحيميد</li>
-              <li>مها بنت عبدالعزيز حمد البراهيم المحيميد</li>
-              <li>فهد خالد عبدالله المحيميد</li>
-              <li>سمو جهاد صالح المحيميد</li>
-            </ul>
-            <i class="fa-solid fa-child-reaching bg-icon-float"></i>
-          </div>
-        </div>
-
-        <div class="col-lg-4 fade-up">
-          <div class="news-card h-100">
+        <div class="col-lg-6 fade-up">
+          <div class="news-list-card h-100">
             <div class="card-head">
               <div class="card-icon">
                 <i class="fa-solid fa-tree"></i>
               </div>
               <h4>شجرة الأسرة</h4>
             </div>
-            <p style="color:var(--muted); margin-bottom:18px;">
-              قسم مخصص لتوثيق الامتداد العائلي والترابط بين الأجيال في عرض بصري جميل.
-            </p>
-            <div class="gallery-card" style="min-height:220px;border-radius:22px;">
-              <img src="assets/images/9.jpg" alt="شجرة الأسرة">
-              <div class="gallery-overlay">
-                <div class="gallery-caption">
-                  <h5>شجرة الأسرة</h5>
-                  <p>ترابط، امتداد، ووفاء عبر الأجيال.</p>
-                </div>
-              </div>
-            </div>
+            <ul class="news-list">
+              <li>يمكنك إضافة صورة أو مخطط شجرة الأسرة لاحقًا عند توفره.</li>
+              <li>هذا القسم مناسب ليكون توثيقًا بصريًا جميلًا للامتداد العائلي.</li>
+            </ul>
             <i class="fa-solid fa-seedling bg-icon-float"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="row g-4 mt-1">
-        <div class="col-md-6 fade-up">
-          <div class="gallery-card">
-            <img src="assets/images/7.jpg" alt="قسم الزواج">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>أفراح الأسرة</h5>
-                <p>لحظات سعيدة توثّق الفرح والمودة.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 fade-up">
-          <div class="gallery-card">
-            <img src="assets/images/8.jpg" alt="قسم المواليد">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>مواليد جدد</h5>
-                <p>بدايات جميلة تزيد الأسرة بهجة وسعادة.</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Closing -->
   <section class="section" id="closing">
     <div class="container">
       <div class="section-title-wrap fade-up">
@@ -1198,48 +1383,37 @@
         </div>
         <h2 class="section-title">ختام المجلة</h2>
         <p class="section-subtitle">
-          ختام يليق بروح هذه المجلة، ويترك أثرًا من المودة والفخر والانتماء.
+          ختام يليق بالمجلة وبالأسرة، ويترك أثرًا من الألفة والفخر والامتنان.
         </p>
       </div>
 
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6 fade-up">
-          <div class="quote-card h-100">
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-8 fade-up">
+          <div class="quote-card">
             <div class="quote-icon">
               <i class="fa-solid fa-heart"></i>
             </div>
             <div class="quote-text">
-              وبمناسبة حلول عيد الفطر المبارك، نتقدم لكم بأطيب التهاني وأصدق التبريكات، سائلين الله أن يعيده عليكم وعلى أسركم الكريمة
-              باليمن والبركات، وأن يديم عليكم المحبة والصفاء والاجتماع على الخير.
+              وبمناسبة حلول عيد الفطر المبارك، نتقدم لكم بأطيب التهاني وأصدق التبريكات،
+              سائلين الله أن يعيده عليكم وعلى أسركم الكريمة باليمن والبركات،
+              وأن يديم عليكم المحبة والصفاء والاجتماع على الخير.
             </div>
             <div class="quote-author">وكل عام وأنتم بخير</div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 fade-up">
-          <div class="gallery-card" style="min-height:360px;">
-            <img src="assets/images/10.jpg" alt="ختام المجلة">
-            <div class="gallery-overlay">
-              <div class="gallery-caption">
-                <h5>صورة الختام</h5>
-                <p>يمكنك وضع صورة جماعية أو صورة رمزية أنيقة للأسرة.</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer-mag">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-title">مجلة أسرة المحيميد</div>
         <p class="footer-text">
-          مجلة عائلية رقمية صُممت لتوثيق اللحظات الجميلة والإنجازات والأخبار المبهجة، في قالب بصري دافئ وحديث يليق بالأسرة.
+          مجلة عائلية رقمية صُممت لتوثيق اللحظات الجميلة والإنجازات والأخبار المبهجة،
+          في قالب بصري دافئ وحديث يليق بالأسرة.
         </p>
-        <button class="btn-soft btn-light-soft" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <button class="btn-soft btn-outline-soft" onclick="window.scrollTo({top:0, behavior:'smooth'})">
           <i class="fa-solid fa-arrow-up me-2"></i>
           العودة للأعلى
         </button>
@@ -1270,15 +1444,6 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    const topNav = document.getElementById('topNav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        topNav.classList.add('scrolled');
-      } else {
-        topNav.classList.remove('scrolled');
-      }
-    });
   </script>
 
 </body>
